@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('module1', ['module2']);
+        angular.module('module2', ['module3']);
+        angular.module('module2');
+        angular.bootstrap(['module1']);
+        //angular.module('module3');
+        angular.module('module3', []);
+    </script>
+</body>
+</html>

@@ -20,7 +20,7 @@ var MyAppComponent = (function () {
             selector: 'my-app'
         }),
         angular2_1.View({
-            template: '<h1>Hello {{ name }}</h1>'
+            templateUrl: 'app.html'
         }), 
         __metadata('design:paramtypes', [])
     ], MyAppComponent);

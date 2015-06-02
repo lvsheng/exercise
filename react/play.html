@@ -1,0 +1,38 @@
+<div id="container"></div>
+<div id="container2"></div>
+
+<script src="react.js"></script>
+<script src="JSXTransformer.js"></script>
+
+<script type="text/jsx">
+    var Son = React.createClass({
+        componentWillReceiveProps: function (newProp) {
+            console.log("son.componentWillReceiveProps, newProp.input: ", newProp.input);
+            //this.props.callback(newProp.input); //if this line work, then unfinished loop
+        },
+        notifyFather: function () {
+            this.props.callback(React.findDOMNode(this.refs.inputElement).value);
+        },
+        render: function () {
+            console.log("son.render, this.props.input: ", this.props.input);
+            return <input ref="inputElement" value={this.props.input} onChange={this.notifyFather}/>;
+        }
+    });
+
+    var Father = React.createClass({
+        getInitialState: function() {
+            return {value: 1};
+        },
+        sonCallback: function (value) {
+            console.log("parent.sonCallback, value: ", value);
+            this.setState({value: value});
+        },
+        render: function () {
+            console.log("parent.render, this.state.value:", this.state.value);
+            return <Son input={this.state.value} callback={this.sonCallback}/>;
+        }
+    });
+
+    React.render(<Father/>, document.getElementById('container'));
+    React.render(<Father/>, document.getElementById('container2'));
+</script>

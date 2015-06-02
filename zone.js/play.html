@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="lib/zone.js"></script>
+</head>
+<body>
+
+<script>
+    console.info("<script>");
+
+    zone.hello = 'zone.world outer zone'; //zone内与外界不共享
+    var anotherData = {
+        hello: 'anotherData.world outer zone' //zone内与外界共享
+    };
+
+    var myZone = zone.fork({
+        beforeTask: function () {
+            console.info('beforeTask');
+        },
+        afterTask: function () {
+            console.info('afterTask');
+        }
+    });
+    myZone.run(function () {
+        console.info('enter zone');
+
+        zone.hello = 'zone.world in zone';
+        anotherData.hello = 'anotherData.world in zone';
+
+        setTimeout(function () {
+            console.info("timeout callback");
+            console.group('in timeout');
+            console.log(zone.hello);
+            console.log(anotherData.hello);
+            console.groupEnd();
+        });
+    });
+
+    console.group('outer zone');
+    console.log(zone.hello);
+    console.log(anotherData.hello);
+    console.groupEnd();
+    zone.hello = "zone.world outer zone again";
+</script>
+
+</body>
+</html>

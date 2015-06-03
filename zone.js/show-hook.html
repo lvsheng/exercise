@@ -16,9 +16,10 @@
         }
     }).run(function () {
         console.log("run function");
-        setInterval(function () {
-            console.log("interval " + new Date().getTime());
-        }, 500);
+
+        document.addEventListener('click', function () {
+            console.log('click');
+        });
     });
 </script>
 

@@ -24,7 +24,7 @@ class FriendsService {
     <p *if="friends.length > 3">
         so many~
     </p>
-    <input type="text" (keyup)="sayHello(myname)" #myname/>
+    <input type="text" (keyup) #myname/>
     <p>{{ myname }}</p>
     <p>{{ myname.value }}</p>
     `,

@@ -14,7 +14,6 @@ class MyAppComponent {
 
         //testing for outer change
         setInterval(function () {
-            debugger;
             this.name = 'tb_fe second: ' + (new Date().getSeconds());
         }.bind(this), 1000);
     }

@@ -1,0 +1,40 @@
+<div id="container"></div>
+
+<script src="react.js"></script>
+<script src="JSXTransformer.js"></script>
+
+<script type="text/jsx">
+    var TodoItem = React.createClass({
+        render: function () {
+            return (
+                    <li class="todo-item">
+                        {this.props.data}
+                    </li>
+            );
+        }
+    });
+    var TodoList = React.createClass({
+        render: function () {
+            var listNodes = this.props.data.map(function (todo) {
+                return (
+                        <TodoItem data={todo}></TodoItem>
+                );
+            });
+            return (
+                    <div class="todo-list">
+                        {listNodes}
+                    </div>
+            );
+        }
+    });
+    var TodoApp = React.createClass({
+        render: function () {
+            return (
+                    <TodoList data={this.props.data}></TodoList>
+            );
+        }
+    });
+
+    var list = [1, 2, 3, 4];
+    React.render(<TodoApp data={list}></TodoApp>, document.getElementById('container'));
+</script>

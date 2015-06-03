@@ -136,6 +136,15 @@
             prototype: ImgSliderProto
         });
     }, 1000);
+
+    var imgSlider = document.createElement("img-slider");
+    [].slice.apply(document.querySelector('img-slider').children).map(function (origin) {
+        return document.importNode(origin);
+    }).forEach(function (img) {
+        imgSlider.appendChild(img);
+    });
+    //目前有bug：两个组件会互相影响~ 怀疑是shadow-dom对radio的name属性处理的问题
+    document.body.appendChild(imgSlider);
 </script>
 
 </body>

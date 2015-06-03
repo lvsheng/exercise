@@ -51,7 +51,7 @@
             transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
         }
 
-        #slides img {
+        #slides ::content img {
             width: 25%;
             float: left;
         }
@@ -100,10 +100,7 @@
         <div id="slides">
             <div id="overflow">
                 <div class="inner">
-                    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
-                    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
-                    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
-                    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
+                    <content select="img"></content>
                 </div> <!-- .inner -->
             </div> <!-- #overflow -->
         </div>
@@ -114,7 +111,12 @@
     </div>
 </template>
 
-<div class="img-slider"></div>
+<div class="img-slider">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif?v=33154426.gif">
+</div>
 
 <script>
     var template = document.querySelector('template');

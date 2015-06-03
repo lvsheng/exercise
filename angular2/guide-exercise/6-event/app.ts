@@ -24,6 +24,7 @@ class FriendsService {
     <p *if="friends.length > 3">
         so many~
     </p>
+    <input type="text" (keyup)="sayHello()"/>
     `,
     directives: [For, If]
 })
@@ -39,6 +40,10 @@ class MyAppComponent {
         setInterval(function () {
             this.name = 'tb_fe second: ' + (new Date().getSeconds());
         }.bind(this), 1000);
+    }
+
+    sayHello () {
+        console.log('hello');
     }
 }
 

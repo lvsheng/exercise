@@ -1,5 +1,5 @@
 /// <reference path="../../lib/typings/angular2/angular2.d.ts" />
-import {Component, View, bootstrap, For} from 'angular2/angular2';
+import {Component, View, bootstrap, For, If} from 'angular2/angular2';
 
 @Component({
     selector: 'my-app'
@@ -13,8 +13,11 @@ import {Component, View, bootstrap, For} from 'angular2/angular2';
             {{ friend }}
         </li>
     </ul>
+    <p *if="friends.length > 3">
+        so many~
+    </p>
     `,
-    directives: [For]
+    directives: [For, If]
 })
 class MyAppComponent {
     name: string;

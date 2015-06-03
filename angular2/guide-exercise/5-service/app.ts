@@ -1,8 +1,16 @@
 /// <reference path="../../lib/typings/angular2/angular2.d.ts" />
 import {Component, View, bootstrap, For} from 'angular2/angular2';
 
+class FriendsService {
+    names: Array<string>;
+    constructor () {
+        this.names = ['tb_qa', 'tb_pm', 'tb_rd', 'baidu'];
+    }
+}
+
 @Component({
-    selector: 'my-app'
+    selector: 'my-app',
+    injectables: [FriendsService]
 })
 @View({
     template: `
@@ -20,9 +28,9 @@ class MyAppComponent {
     name: string;
     friends: Array<string>;
 
-    constructor () {
+    constructor (friendsService: FriendsService) {
         this.name = 'tb_fe';
-        this.friends = ['tb_qa', 'tb_pm', 'tb_rd', 'baidu'];
+        this.friends = friendsService.names;
 
         //testing for outer change
         setInterval(function () {

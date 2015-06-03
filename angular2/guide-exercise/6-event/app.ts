@@ -24,7 +24,8 @@ class FriendsService {
     <p *if="friends.length > 3">
         so many~
     </p>
-    <input type="text" (keyup)="sayHello()" #myname/>
+    <input type="text" (keyup)="sayHello(myname)" #myname/>
+    <p>{{ myname }}</p>
     <p>{{ myname.value }}</p>
     `,
     directives: [For, If]
@@ -43,8 +44,9 @@ class MyAppComponent {
         }.bind(this), 1000);
     }
 
-    sayHello () {
+    sayHello (myname) {
         console.log('hello');
+        console.log(myname);
     }
 }
 

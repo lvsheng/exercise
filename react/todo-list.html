@@ -13,6 +13,7 @@
             );
         }
     });
+
     var TodoList = React.createClass({
         render: function () {
             var listNodes = this.props.data.map(function (todo) {
@@ -27,11 +28,25 @@
             );
         }
     });
+
     var TodoApp = React.createClass({
+        getInitialState: function () {
+            return { list: this.props.data };
+        },
         render: function () {
             return (
-                    <TodoList data={this.props.data}></TodoList>
+                    <div class="todo-app">
+                        <TodoList data={this.state.list}></TodoList>
+                        <input type="text" onKeyUp={this.doneTyping} ref="input"/>
+                    </div>
             );
+        },
+        doneTyping: function (event) {
+            if (event.which === 13) {
+                this.state.list.push(this.refs.input.getDOMNode().value);
+                this.setState({ list: this.state.list });
+                this.refs.input.getDOMNode().value = '';
+            }
         }
     });
 

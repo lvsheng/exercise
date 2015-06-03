@@ -4,7 +4,7 @@ import {Component, View, bootstrap, For, If} from 'angular2/angular2';
 class FriendsService {
     names: Array<string>;
     constructor () {
-        this.names = ['tb_qa', 'tb_pm', 'tb_rd', 'baidu'];
+        this.names = [];
     }
 }
 
@@ -25,8 +25,7 @@ class FriendsService {
         so many~
     </p>
     <input type="text" #myname/>
-    <p>{{ myname }}</p>
-    <p>{{ myname.value }}</p>
+    <button (click)="addFriend(myname.value)">Add</button>
     `,
     directives: [For, If]
 })
@@ -44,9 +43,8 @@ class MyAppComponent {
         }.bind(this), 1000);
     }
 
-    sayHello (myname) {
-        console.log('hello');
-        console.log(myname);
+    addFriend (name) {
+        this.friends.push(name);
     }
 }
 

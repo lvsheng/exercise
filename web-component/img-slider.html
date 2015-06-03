@@ -119,21 +119,23 @@
 </img-slider>
 
 <script>
-    var template = document.querySelector('template');
+    setTimeout(function () {
+        var template = document.querySelector('template');
 
-    // Create a prototype for a new element that extends HTMLElement
-    var ImgSliderProto = Object.create(HTMLElement.prototype);
+        // Create a prototype for a new element that extends HTMLElement
+        var ImgSliderProto = Object.create(HTMLElement.prototype);
 
-    // Setup our Shadow DOM and clone the template
-    ImgSliderProto.createdCallback = function() {
-        var root = this.createShadowRoot();
-        root.appendChild(document.importNode(template.content, true));
-    };
+        // Setup our Shadow DOM and clone the template
+        ImgSliderProto.createdCallback = function() {
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(template.content, true));
+        };
 
-    // Register our new element
-    document.registerElement('img-slider', {
-        prototype: ImgSliderProto
-    });
+        // Register our new element
+        document.registerElement('img-slider', {
+            prototype: ImgSliderProto
+        });
+    }, 1000);
 </script>
 
 </body>

@@ -24,8 +24,7 @@ class FriendsService {
     <p *if="friends.length > 3">
         so many~
     </p>
-    <input type="text" #myname/>
-    <button (click)="addFriend(myname.value)">Add</button>
+    <input type="text" (keyup)="doneTyping($event)"/>
     `,
     directives: [For, If]
 })
@@ -45,6 +44,13 @@ class MyAppComponent {
 
     addFriend (name) {
         this.friends.push(name);
+    }
+
+    doneTyping ($event) {
+        if($event.which === 13) {
+            this.addFriend($event.target.value);
+            $event.target.value = null;
+        }
     }
 }
 

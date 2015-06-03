@@ -1,5 +1,5 @@
 /// <reference path="../../lib/typings/angular2/angular2.d.ts" />
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, View, bootstrap, For} from 'angular2/angular2';
 
 @Component({
     selector: 'my-app'
@@ -13,7 +13,8 @@ import {Component, View, bootstrap} from 'angular2/angular2';
             {{ friend }}
         </li>
     </ul>
-    `
+    `,
+    directives: [For]
 })
 class MyAppComponent {
     name: string;

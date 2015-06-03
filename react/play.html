@@ -26,6 +26,7 @@
         sonCallback: function (value) {
             console.log("parent.sonCallback, value: ", value);
             this.setState({value: value});
+            //this.setState({value: value + 'a'}); //if enable, every time input change, the value will added an 'a'
         },
         render: function () {
             console.log("parent.render, this.state.value:", this.state.value);

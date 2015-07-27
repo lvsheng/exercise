@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- document.body.scrollWidth === window.screen.width when set: -->
+    <meta name="viewport" content="width=device-width">
+    <!--<meta name="viewport" content="width=1080">-->
+</head>
+<body>
+    <script type="text/javascript">
+        // 结论：Number、Date等内置对象均原型继承自Object，除undefined与null外其他值均可调用到Object.prototype.hasOwnProperty
+        var values = [undefined, null, 3, 'xx', true, new Number(3), new String('xx'), new Boolean(true), /a/, new Date(), function () {}, [], {}];
+        values.forEach(function (value) {
+            console.group(value);
+
+            console.log(value instanceof Object);
+
+            try {
+                console.log(value.hasOwnProperty);
+            } catch (e) {
+                console.error(e);
+            }
+
+            console.groupEnd();
+        });
+    </script>
+</body>
+</html>
